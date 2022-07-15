@@ -3,7 +3,7 @@ import Express from "express";
 import { User as ModelUser } from "../models/m.User";
 import { JWT } from "../modules/JWT";
 
-import { Op } from "sequelize/types";
+import { Op } from "sequelize";
 
 const router = Express.Router();
 
@@ -16,7 +16,7 @@ router.post("/login", (req: Express.Request, res: Express.Response, next: Functi
 			},
 		},
 	});
-	console.log({ email, password });
+	console.log({ email, password, user });
 	res.send("Hello there");
 });
 

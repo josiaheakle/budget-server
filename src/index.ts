@@ -1,17 +1,18 @@
 import Express from "express";
+
+import { initModels } from "./models/InitModels";
 import { router as allRoutes } from "./routes/allRoutes";
+import { logger, useLogger } from "./modules/Logger";
 
 const app = Express();
 
 const PORT = process.env.PORT ?? 5000;
 
-const initRoutes = () => {
-  app.use(allRoutes);
-};
-
 const startApp = async () => {
-  initRoutes();
-  app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+	await initModels();
+	app.use(allRoutes);
+	app.use(useLogger);
+	app.listen(PORT, () => logger.info(`Server started on port ${PORT}.`));
 };
 
 startApp();

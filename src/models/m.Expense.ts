@@ -1,5 +1,4 @@
-import { DataTypes, Model } from "sequelize/types";
-
+import { DataTypes, Model } from "sequelize";
 import sequelize from "../modules/Database";
 
 import { ExpenseCategory } from "./m.ExpenseCategory";
@@ -9,25 +8,25 @@ import { ModelBase } from "./m.ModelBase";
 class Expense extends Model {}
 
 Expense.init(
-  {
-    ...ModelBase,
-    amount: {
-      type: DataTypes.DECIMAL,
-      allowNull: false,
-    },
-    categoryId: {
-      type: DataTypes.STRING,
-      references: "expenseCategory",
-      key: "id",
-    },
-  },
-  {
-    sequelize,
-    modelName: "expense",
-  }
+	{
+		...ModelBase,
+		amount: {
+			type: DataTypes.DECIMAL,
+			allowNull: false,
+		},
+		categoryId: {
+			type: DataTypes.STRING,
+			references: "expenseCategory",
+			key: "id",
+		},
+	},
+	{
+		sequelize,
+		modelName: "expense",
+	}
 );
 
-Expense.belongsTo(Budget);
-Expense.hasOne(ExpenseCategory);
+// Expense.belongsTo(Budget);
+// Expense.hasOne(ExpenseCategory);
 
 export { Expense };
