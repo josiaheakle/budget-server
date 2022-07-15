@@ -1,10 +1,11 @@
 import Express from "express";
 
-import { router as budgetRouter } from "./budget";
-// import {router as expenseRouter} from './expense'
+import { budgetRouter } from "./budget";
+import { authRouter } from "./auth";
 
 const router = Express.Router();
 
 router.use("/budget", budgetRouter);
+router.use("/auth", authRouter);
 
 export { router };

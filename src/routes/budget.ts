@@ -6,4 +6,4 @@ const router = Express.Router();
 router.use(isUserLoggedIn);
 router.get("/:budgetId", (req, res, next) => {});
 
-export { router };
+export { router as budgetRouter };
