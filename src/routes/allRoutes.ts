@@ -1,3 +1,7 @@
+/**
+ * Centralized place for all routers to be pulled into app
+ */
+
 import Express from "express";
 
 import { budgetRouter } from "./budget";
