@@ -1,24 +1,26 @@
-import { DataTypes, Model, Optional } from "sequelize";
-import sequelize from "../modules/Database";
+import { DataTypes, Model, Optional } from "sequelize"
+import sequelize from "../modules/Database"
 
-import { ModelBase } from "./m.ModelBase";
+import { ModelBase } from "./m.ModelBase"
 
 type UserAttributes = {
-	id: string;
-	firstName: string;
-	lastName: string;
-	email: string;
-	password: string;
-};
+	id: string
+	uuid?: string
+	firstName: string
+	lastName: string
+	email: string
+	password: string
+}
 
-type UserCreationAttributes = Optional<UserAttributes, "id">;
+type UserCreationAttributes = Optional<UserAttributes, "id">
 
 class User extends Model<UserAttributes, UserCreationAttributes> {
-	declare id: string;
-	declare firstName: string;
-	declare lastName: string;
-	declare email: string;
-	declare password: string;
+	declare id: number
+	declare uuid: string
+	declare firstName: string
+	declare lastName: string
+	declare email: string
+	declare password: string
 }
 
 User.init(
@@ -46,6 +48,6 @@ User.init(
 		sequelize,
 		modelName: "user",
 	}
-);
+)
 
-export { User };
+export { User }

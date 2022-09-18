@@ -36,11 +36,12 @@ export const formatServerResponse = (
 	data?: any,
 	errors?: RequestErrors
 ): ServerResponse => {
+	if (isValid && !data) throw "Must have a data object if isValid is true";
 	const sRes: ServerResponse = {
-		valid: isValid,
-		msg: message,
+		isValid,
+		message,
+		data,
+		errors,
 	};
-	if (data) sRes["data"] = data;
-	if (errors) sRes["errors"] = errors;
 	return sRes;
 };

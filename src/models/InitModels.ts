@@ -6,6 +6,6 @@ import { ExpenseCategory as ModelExpenseCategory } from "./m.ExpenseCategory";
 export const initModels = async () => {
 	await ModelUser.sync();
 	await ModelBudget.sync();
-	await ModelExpense.sync();
 	await ModelExpenseCategory.sync();
+	await ModelExpense.sync();
 };

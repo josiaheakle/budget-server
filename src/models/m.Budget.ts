@@ -7,23 +7,25 @@ import { ModelBase } from "./m.ModelBase";
 class Budget extends Model {}
 
 Budget.init(
-  {
-    ...ModelBase,
-    type: {
-      type: DataTypes.ENUM,
-      values: ["actual", "projected"],
-      allowNull: false,
-    },
-    ownerId: {
-      type: DataTypes.STRING,
-      references: "user",
-      key: "id",
-    },
-  },
-  {
-    sequelize,
-    modelName: "budget",
-  }
+	{
+		...ModelBase,
+		type: {
+			type: DataTypes.ENUM,
+			values: ["actual", "projected"],
+			allowNull: false,
+		},
+		ownerId: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: User,
+				key: "id",
+			},
+		},
+	},
+	{
+		sequelize,
+		modelName: "budget",
+	}
 );
 
 Budget.belongsTo(User);

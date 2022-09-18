@@ -1,9 +1,7 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model } from "sequelize"
 
-import sequelize from "../modules/Database";
-
-import { Expense } from "./m.Expense";
-import { ModelBase } from "./m.ModelBase";
+import sequelize from "../modules/Database"
+import { ModelBase } from "./m.ModelBase"
 
 class ExpenseCategory extends Model {}
 
@@ -19,8 +17,6 @@ ExpenseCategory.init(
 		sequelize,
 		modelName: "expenseCategory",
 	}
-);
+)
 
-// ExpenseCategory.hasMany(Expense);
-
-export { ExpenseCategory };
+export { ExpenseCategory }
