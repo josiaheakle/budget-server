@@ -5,6 +5,8 @@ import { ModelBase } from "./m.ModelBase"
 
 class ExpenseCategory extends Model {}
 
+export const ExpenseCategoryServerOnlyProps = ["id", "createdAt", "updatedAt"]
+
 ExpenseCategory.init(
 	{
 		...ModelBase,

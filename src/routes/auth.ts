@@ -7,7 +7,7 @@ import { body, validationResult } from "express-validator"
 import { Op } from "sequelize"
 import * as bcrypt from "bcrypt"
 
-import { User as ModelUser, User } from "../models/m.User"
+import { User as ModelUser } from "../models/m.User"
 import { isUserLoggedIn } from "../middleware/isUserLoggedIn"
 import { formatServerResponse, formatValidationErrors } from "../modules/util/ObjectFormatter"
 import { JWT } from "../modules/JWT"
@@ -17,8 +17,8 @@ const router = Express.Router()
 router.get(
 	"/user",
 	isUserLoggedIn,
-	async (req: Express.Request, res: Express.Response, next: Function) => {
-		res.send(formatServerResponse(true, "Got user data.", res.locals.user))
+	(req: Express.Request, res: Express.Response, next: Function) => {
+		return res.send(formatServerResponse(true, "Got user data.", res.locals.user))
 	}
 )
 
@@ -135,7 +135,7 @@ router.post(
 		}
 
 		// Create user
-		const user = User.build({ email, firstName, lastName, password: hashedPass })
+		const user = ModelUser.build({ email, firstName, lastName, password: hashedPass })
 		await user.save()
 
 		return res.json(

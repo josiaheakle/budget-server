@@ -11,11 +11,12 @@ const app = Express()
 const PORT = process.env.PORT ?? 5555
 
 const startApp = async () => {
+	app.use(Express.json())
 	await initModels()
 	app.use((req: Express.Request, res: Express.Response, next: Function) => {
+		console.log(req.body)
 		next()
 	})
-	app.use(Express.json())
 	app.use(cors())
 	app.use(allRoutes)
 	app.use(useLogger)

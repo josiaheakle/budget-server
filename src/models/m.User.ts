@@ -14,6 +14,8 @@ type UserAttributes = {
 
 type UserCreationAttributes = Optional<UserAttributes, "id">
 
+const ClientOnlyModelProps = ["firstName", "lastName", "email", "uuid"]
+
 class User extends Model<UserAttributes, UserCreationAttributes> {
 	declare id: number
 	declare uuid: string
@@ -50,4 +52,4 @@ User.init(
 	}
 )
 
-export { User }
+export { User, ClientOnlyModelProps }

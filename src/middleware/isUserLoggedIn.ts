@@ -1,6 +1,6 @@
 import * as Express from "express"
 
-import { User } from "../models/m.User"
+import { ClientOnlyModelProps, User } from "../models/m.User"
 import { JWT } from "../modules/JWT"
 
 import { ServerResponse } from "../../../shared/types/ServerResponse"
@@ -47,6 +47,7 @@ const isUserLoggedIn = async (req: Express.Request, res: Express.Response, next:
 			} else {
 				// If token is valid and userId exists
 				const user = await User.findOne({
+					attributes: ClientOnlyModelProps,
 					where: {
 						uuid: userId,
 					},
