@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional } from "sequelize"
 import sequelize from "../modules/Database"
 
-import { ModelBase } from "./m.ModelBase"
+import { ModelBase, serverOnlyAttributes } from "./m.ModelBase"
 
 type UserAttributes = {
 	id: string
@@ -49,6 +49,13 @@ User.init(
 	{
 		sequelize,
 		modelName: "user",
+		scopes: {
+			client: {
+				attributes: {
+					exclude: serverOnlyAttributes.concat(["password"]),
+				},
+			},
+		},
 	}
 )
 

@@ -46,7 +46,7 @@ const isUserLoggedIn = async (req: Express.Request, res: Express.Response, next:
 				res.send(response)
 			} else {
 				// If token is valid and userId exists
-				const user = await User.findOne({
+				const user = await User.scope("client").findOne({
 					where: {
 						uuid: userId,
 					},

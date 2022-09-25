@@ -3,7 +3,7 @@ import sequelize from "../modules/Database"
 
 import { ExpenseCategory } from "./m.ExpenseCategory"
 import { Budget } from "./m.Budget"
-import { ModelBase } from "./m.ModelBase"
+import { clientScope, ModelBase } from "./m.ModelBase"
 import { User } from "./m.User"
 
 class Expense extends Model {}
@@ -13,6 +13,10 @@ Expense.init(
 		...ModelBase,
 		amount: {
 			type: DataTypes.DECIMAL(8, 2),
+			allowNull: false,
+		},
+		expenseDate: {
+			type: DataTypes.DATE,
 			allowNull: false,
 		},
 		categoryId: {
@@ -33,6 +37,9 @@ Expense.init(
 	{
 		sequelize,
 		modelName: "expense",
+		scopes: {
+			client: clientScope,
+		},
 	}
 )
 

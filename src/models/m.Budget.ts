@@ -2,7 +2,7 @@ import { DataTypes, Model } from "sequelize"
 import sequelize from "../modules/Database"
 
 import { User } from "./m.User"
-import { ModelBase } from "./m.ModelBase"
+import { clientScope, ModelBase } from "./m.ModelBase"
 
 class Budget extends Model {}
 
@@ -25,6 +25,9 @@ Budget.init(
 	{
 		sequelize,
 		modelName: "budget",
+		scopes: {
+			client: clientScope,
+		},
 	}
 )
 
