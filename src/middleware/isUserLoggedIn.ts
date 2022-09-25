@@ -59,7 +59,6 @@ const isUserLoggedIn = async (req: Express.Request, res: Express.Response, next:
 					}
 					res.send(response)
 				} else {
-					// Able to find user
 					res.locals.user = user
 					next()
 				}

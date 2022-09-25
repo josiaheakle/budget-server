@@ -138,8 +138,7 @@ router.post(
 		}
 
 		// Create user
-		const user = ModelUser.build({ email, firstName, lastName, password: hashedPass })
-		await user.save()
+		const user = await ModelUser.create({ email, firstName, lastName, password: hashedPass })
 
 		return res.json(
 			formatServerResponse(true, "Successfully created account!", {

@@ -115,7 +115,7 @@ router.post(
 				return res.json(formatServerResponse(false, errorMsg, undefined, errors))
 			}
 
-			const cateogory = await ExpenseCategory.create({ name, icon })
+			const cateogory = await ExpenseCategory.create({ name, icon, userId: res.locals.user.uuid })
 
 			return res.json(
 				formatServerResponse(

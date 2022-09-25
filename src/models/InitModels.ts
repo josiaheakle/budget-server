@@ -6,7 +6,7 @@ import { ExpenseCategory as ModelExpenseCategory } from "./m.ExpenseCategory"
 
 export const initModels = async () => {
 	const opts = {
-		force: true,
+		alter: true,
 	}
 	try {
 		console.log("sequelize start")
