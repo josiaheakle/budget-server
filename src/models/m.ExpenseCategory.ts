@@ -27,11 +27,6 @@ ExpenseCategory.init(
 	{
 		sequelize,
 		modelName: "expenseCategory",
-		defaultScope: {
-			attributes: {
-				exclude: ["id", "updatedAt", "createdAt"],
-			},
-		},
 	}
 )
 

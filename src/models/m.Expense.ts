@@ -33,11 +33,6 @@ Expense.init(
 	{
 		sequelize,
 		modelName: "expense",
-		defaultScope: {
-			attributes: {
-				exclude: ["id", "updatedAt", "createdAt"],
-			},
-		},
 	}
 )
 

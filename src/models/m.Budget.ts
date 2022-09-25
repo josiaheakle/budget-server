@@ -25,11 +25,6 @@ Budget.init(
 	{
 		sequelize,
 		modelName: "budget",
-		defaultScope: {
-			attributes: {
-				exclude: ["id", "updatedAt", "createdAt"],
-			},
-		},
 	}
 )
 
