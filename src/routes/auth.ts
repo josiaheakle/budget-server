@@ -41,6 +41,9 @@ router.post("/login", async (req: Express.Request, res: Express.Response, next: 
 				[Op.eq]: email,
 			},
 		},
+		attributes: {
+			include: ["password"],
+		},
 	})
 
 	// Handle no user associated with email

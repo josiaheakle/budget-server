@@ -7,7 +7,9 @@ import { v4 as uuid } from "uuid"
  * @returns
  */
 export function generateUUID(length?: number): string {
-	const uuidStr = (uuid() as string).replaceAll("-", "").slice(0, length || 16)
-	console.log(uuidStr)
+	const uuidStr = uuid()
+		.toString()
+		.replaceAll("-", "")
+		.slice(0, length || 16)
 	return uuidStr
 }

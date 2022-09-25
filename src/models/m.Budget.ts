@@ -1,8 +1,8 @@
-import { DataTypes, Model } from "sequelize";
-import sequelize from "../modules/Database";
+import { DataTypes, Model } from "sequelize"
+import sequelize from "../modules/Database"
 
-import { User } from "./m.User";
-import { ModelBase } from "./m.ModelBase";
+import { User } from "./m.User"
+import { ModelBase } from "./m.ModelBase"
 
 class Budget extends Model {}
 
@@ -14,20 +14,25 @@ Budget.init(
 			values: ["actual", "projected"],
 			allowNull: false,
 		},
-		ownerId: {
-			type: DataTypes.INTEGER,
+		userId: {
+			type: DataTypes.UUID,
 			references: {
 				model: User,
-				key: "id",
+				key: "uuid",
 			},
 		},
 	},
 	{
 		sequelize,
 		modelName: "budget",
+		defaultScope: {
+			attributes: {
+				exclude: ["id", "updatedAt", "createdAt"],
+			},
+		},
 	}
-);
+)
 
-Budget.belongsTo(User);
+Budget.belongsTo(User)
 
-export { Budget };
+export { Budget }

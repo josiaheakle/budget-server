@@ -4,6 +4,7 @@ import sequelize from "../modules/Database"
 import { ExpenseCategory } from "./m.ExpenseCategory"
 import { Budget } from "./m.Budget"
 import { ModelBase } from "./m.ModelBase"
+import { User } from "./m.User"
 
 class Expense extends Model {}
 
@@ -21,10 +22,22 @@ Expense.init(
 				key: "uuid",
 			},
 		},
+		userId: {
+			type: DataTypes.UUID,
+			references: {
+				model: User,
+				key: "uuid",
+			},
+		},
 	},
 	{
 		sequelize,
 		modelName: "expense",
+		defaultScope: {
+			attributes: {
+				exclude: ["id", "updatedAt", "createdAt"],
+			},
+		},
 	}
 )
 

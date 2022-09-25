@@ -14,7 +14,8 @@ const startApp = async () => {
 	app.use(Express.json())
 	await initModels()
 	app.use((req: Express.Request, res: Express.Response, next: Function) => {
-		console.log(req.body)
+		const { body, path } = req
+		console.log({ body, path })
 		next()
 	})
 	app.use(cors())

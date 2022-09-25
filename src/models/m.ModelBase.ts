@@ -9,6 +9,7 @@ export const ModelBase = {
 	},
 	uuid: {
 		type: DataTypes.UUID,
+		unique: true,
 		defaultValue: () => generateUUID(),
 	},
 }
